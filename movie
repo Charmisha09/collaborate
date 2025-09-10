@@ -1,0 +1,67 @@
+class Movie:
+    def __init__(self, title, director, year, genre):
+        self.title = title
+        self.director = director
+        self.year = year
+        self.genre = genre
+
+    def __str__(self):
+        return f"{self.title} ({self.year}) - {self.director}, Genre: {self.genre}"
+
+class MovieDatabase:
+    def __init__(self):
+        self.movies = []
+
+    def add_movie(self, title, director, year, genre):
+        movie = Movie(title, director, year, genre)
+        self.movies.append(movie)
+        print(f"Added movie: {movie}")
+
+    def search_by_title(self, title):
+        results = [movie for movie in self.movies if title.lower() in movie.title.lower()]
+        return results
+
+    def display_all_movies(self):
+        if not self.movies:
+            print("No movies in database.")
+        else:
+            print("Movies in database:")
+            for movie in self.movies:
+                print(movie)
+
+# Example usage
+db = MovieDatabase()
+
+while True:
+    print("\nMovie Database Menu:")
+    print("1. Add Movie")
+    print("2. Search Movie by Title")
+    print("3. Display All Movies")
+    print("4. Exit")
+    
+    choice = input("Enter your choice: ")
+
+    if choice == "1":
+        title = input("Enter movie title: ")
+        director = input("Enter director name: ")
+        year = input("Enter release year: ")
+        genre = input("Enter genre: ")
+        db.add_movie(title, director, year, genre)
+    elif choice == "2":
+        title = input("Enter title to search: ")
+        results = db.search_by_title(title)
+        if results:
+            print("Search results:")
+            for movie in results:
+                print(movie)
+        else:
+            print("No movies found.")
+    elif choice == "3":
+        db.display_all_movies()
+    elif choice == "4":
+        print("Exiting...")
+        break
+    else:
+        print("Invalid choice. Try again.")
+
+
