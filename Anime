@@ -3,55 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <title>Anime Quote Generator</title>
-  <style>
-    body {
-      font-family: "Poppins", sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      background: linear-gradient(135deg, #ff758c, #ff7eb3);
-      color: white;
-      text-align: center;
-    }
-    .card {
-      background: rgba(0, 0, 0, 0.5);
-      padding: 2rem;
-      border-radius: 1rem;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-      max-width: 500px;
-    }
-    button {
-      margin-top: 1rem;
-      padding: 0.6rem 1.2rem;
-      border: none;
-      border-radius: 0.5rem;
-      background: #ff4b5c;
-      color: white;
-      font-weight: bold;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-    button:hover {
-      background: #ff1e3c;
-    }
-  </style>
 </head>
-<body>
-  <div class="card">
-    <h2>Anime Quote Generator</h2>
-    <p id="quote">Click the button to get a quote!</p>
-    <p id="author"></p>
-    <button onclick="getQuote()">New Quote</button>
-  </div>
+<body style="font-family: Arial; text-align:center; background:#222; color:white;">
+
+  <h1>Anime Quote Generator</h1>
+  <p id="quote">Click below to get an anime quote</p>
+  <p id="author"></p>
+  <button onclick="getQuote()" style="padding:10px 20px; font-size:16px;">New Quote</button>
 
   <script>
     async function getQuote() {
       const res = await fetch("https://animechan.xyz/api/random");
       const data = await res.json();
       document.getElementById("quote").innerText = `"${data.quote}"`;
-      document.getElementById("author").innerText = `- ${data.character} (${data.anime})`;
-    }
-  </script>
-</body>
-</html>
+      document.getElementById("author").inn
